@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "twitch-clone",
+    "slug": "twitch-clone",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "twitch-clone"
+}
