@@ -1,23 +1,22 @@
+import { moderateScale } from 'react-native-size-matters';
+
 const DEFAULT_THEME_OBJECT = {
   fonts: {
     regular: 'Inter_400Regular',
     semibold: 'Inter_600SemiBold',
     bold: 'Inter_700Bold',
   },
-  // fontSize: {
-  //   xsmall: moderateScale(8),
-  //   small: moderateScale(10),
-  //   regular: moderateScale(12),
-  //   large: moderateScale(16),
-  //   xlarge: moderateScale(24),
-  // },
-  // lineHeight: {
-  //   xsmall: moderateScale(8),
-  //   small: moderateScale(10),
-  //   regular: moderateScale(12),
-  //   large: moderateScale(16),
-  //   xlarge: moderateScale(24),
-  // },
+  fontSize: {
+    xsmall: moderateScale(12),
+    small: moderateScale(13),
+    regular: moderateScale(14),
+    large: moderateScale(18),
+    xlarge: moderateScale(24),
+  },
+  lineHeight: {
+    heading: 1.2,
+    body: 1.5,
+  },
 };
 
 export const lightTheme = {
