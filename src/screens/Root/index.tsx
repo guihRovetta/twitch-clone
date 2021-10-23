@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
@@ -15,6 +16,7 @@ const Root = () => {
 
   return (
     <ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
+      <StatusBar style={themeMode === 'light' ? 'dark' : 'light'} />
       <Routes />
     </ThemeProvider>
   );
