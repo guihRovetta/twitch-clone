@@ -14,8 +14,8 @@ const DEFAULT_THEME_OBJECT = {
     xlarge: moderateScale(24),
   },
   lineHeight: {
-    heading: 1.2,
-    body: 1.5,
+    heading: moderateScale(12),
+    body: moderateScale(15),
   },
 };
 
@@ -30,6 +30,7 @@ export const lightTheme = {
 
     gray100: 'rgba(0, 0, 0, 0.05)',
     red500: '#e91916',
+    white100: '#ffffff',
   },
 };
 
@@ -44,5 +45,6 @@ export const darkTheme = {
 
     gray100: 'rgba(255, 255, 255, 0.15)',
     red500: '#e91916',
+    white100: '#ffffff',
   },
 };
