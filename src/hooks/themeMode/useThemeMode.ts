@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 
-import { ThemeModeContext } from '../context/ThemeModeContext';
+import { ThemeModeContext } from './ThemeModeContext';
 
-export const useDarkMode = () => {
+export const useThemeMode = () => {
   const context = useContext(ThemeModeContext);
 
   return context;

@@ -7,7 +7,7 @@ import {
 import AppLoading from 'expo-app-loading';
 import React from 'react';
 
-import { ThemeModeProvider } from './src/context/ThemeModeContext';
+import { ThemeModeProvider } from './src/hooks/themeMode/ThemeModeContext';
 import Root from './src/screens/Root';
 
 export default function App() {
