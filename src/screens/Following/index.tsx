@@ -1,8 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+
+import Header from '../../components/Header';
+import { Container } from './styles';
 
 const Following = () => {
-  return <View />;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 };
 
 export default Following;
