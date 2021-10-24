@@ -4,21 +4,24 @@ import { View } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 
 import { lightTheme, darkTheme } from '../../global/styles/theme';
-import { useDarkMode } from '../../hooks/useDarkMode';
+import { AuthProvider } from '../../hooks/auth/useAuth';
+import { useThemeMode } from '../../hooks/themeMode/useThemeMode';
 import Routes from '../../routes';
 
 const Root = () => {
-  const { themeMode, componentMounted } = useDarkMode();
+  const { themeMode, componentMounted } = useThemeMode();
 
   if (!componentMounted) {
     return <View />;
   }
 
   return (
-    <ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
-      <StatusBar style={themeMode === 'light' ? 'dark' : 'light'} />
-      <Routes />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={themeMode === 'light' ? lightTheme : darkTheme}>
+        <StatusBar style={themeMode === 'light' ? 'dark' : 'light'} />
+        <Routes />
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 
