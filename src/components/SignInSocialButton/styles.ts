@@ -1,4 +1,5 @@
 import { FontAwesome5 } from '@expo/vector-icons';
+import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.Pressable`
@@ -31,3 +32,10 @@ export const ButtonText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.semibold};
   line-height: ${({ theme }) => theme.lineHeight.body}px;
 `;
+
+export const LoadingIndicator = styled(ActivityIndicator).attrs(
+  ({ theme }) => ({
+    color: theme.colors.primary,
+    size: 24,
+  })
+)``;
