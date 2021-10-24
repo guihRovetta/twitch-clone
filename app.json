@@ -28,7 +28,8 @@
     },
     "android": {
       "userInterfaceStyle": "automatic"
-    }
+    },
+    "scheme": "twitch-clone"
   },
   "name": "twitch-clone"
 }
