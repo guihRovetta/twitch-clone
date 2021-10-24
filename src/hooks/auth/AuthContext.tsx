@@ -1,7 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { makeRedirectUri, revokeAsync, startAsync } from 'expo-auth-session';
 import { generateRandom } from 'expo-auth-session/build/PKCE';
 import React, { useEffect, createContext, useState, ReactNode } from 'react';
 
+import { StatusType } from '../../components/Avatar/styles';
 import { api } from '../../services/api';
 
 type User = {
@@ -9,17 +11,19 @@ type User = {
   display_name: string;
   email: string;
   profile_image_url: string;
+  status?: StatusType;
 };
 
-type AuthContextData = {
+type AuthContextType = {
   user: User;
   isLoggingOut: boolean;
   isLoggingIn: boolean;
   signIn: () => Promise<void>;
   signOut: () => Promise<void>;
+  changeUserStatus: (status: StatusType) => void;
 };
 
-type AuthProviderData = {
+type AuthProviderProps = {
   children: ReactNode;
 };
 
@@ -41,20 +45,40 @@ type TwitchGetUser = {
   data: TwitchUser;
 };
 
-export const AuthContext = createContext({} as AuthContextData);
+const USER_STORAGE_KEY = '@twitch-clone:user';
+
+export const AuthContext = createContext({} as AuthContextType);
 
 const twitchEndpoints = {
   authorization: 'https://id.twitch.tv/oauth2/authorize',
   revocation: 'https://id.twitch.tv/oauth2/revoke',
 };
 
-export const AuthProvider = ({ children }: AuthProviderData) => {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [user, setUser] = useState({} as User);
   const [userToken, setUserToken] = useState('');
 
   const { TWITCH_CLIENT_ID } = process.env;
+
+  const saveUser = async (user: User) => {
+    try {
+      await AsyncStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+      setUser(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeUser = async () => {
+    try {
+      await AsyncStorage.removeItem(USER_STORAGE_KEY);
+      setUser({} as User);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const signIn = async () => {
     try {
@@ -93,11 +117,12 @@ export const AuthProvider = ({ children }: AuthProviderData) => {
         const { id, display_name, email, profile_image_url } =
           userResponse.data.data[0] || {};
 
-        setUser({
+        saveUser({
           id,
           display_name,
           email,
           profile_image_url,
+          status: 'online',
         });
 
         setUserToken(access_token);
@@ -118,20 +143,43 @@ export const AuthProvider = ({ children }: AuthProviderData) => {
       );
     } catch (error) {
     } finally {
-      setUser({} as User);
+      removeUser();
       setUserToken('');
       delete api.defaults.headers.common['Authorization'];
       setIsLoggingOut(false);
     }
   };
 
+  const changeUserStatus = (status: StatusType) => {
+    saveUser({ ...user, status });
+  };
+
   useEffect(() => {
     api.defaults.headers['Client-Id'] = TWITCH_CLIENT_ID;
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const localUser = await AsyncStorage.getItem(USER_STORAGE_KEY);
+
+        if (localUser) setUser(JSON.parse(localUser));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
   return (
     <AuthContext.Provider
-      value={{ user, isLoggingOut, isLoggingIn, signIn, signOut }}
+      value={{
+        user,
+        isLoggingOut,
+        isLoggingIn,
+        signIn,
+        signOut,
+        changeUserStatus,
+      }}
     >
       {children}
     </AuthContext.Provider>
