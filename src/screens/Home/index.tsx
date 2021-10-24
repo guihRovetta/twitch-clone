@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Alert } from 'react-native';
 
 import SignInSocialButton from '../../components/SignInSocialButton';
+import { useAuth } from '../../hooks/auth/useAuth';
 import {
   Container,
   LogoWrapper,
@@ -13,6 +15,16 @@ import {
 } from './styles';
 
 const Home = () => {
+  const { signIn, isLoggingIn } = useAuth();
+
+  const handleSignIn = async () => {
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert('Erro SignIn', 'Ocorreu um erro ao tentar logar no app!');
+    }
+  };
+
   return (
     <Container>
       <StatusBar style="light" />
@@ -32,7 +44,12 @@ const Home = () => {
           sua conta da Twitch
         </ActionsDescription>
 
-        <SignInSocialButton name="twitch" title="Entrar com Twitch" />
+        <SignInSocialButton
+          name="twitch"
+          title={!isLoggingIn ? 'Entrar com Twitch' : 'Entrando...'}
+          onPress={handleSignIn}
+          loading={isLoggingIn}
+        />
       </ActionsWrapper>
     </Container>
   );
