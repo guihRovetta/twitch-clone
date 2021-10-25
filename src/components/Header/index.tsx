@@ -16,7 +16,7 @@ const Header = () => {
   const { user } = useAuth();
 
   return (
-    <Container intensity={100}>
+    <Container intensity={10}>
       <Avatar uri={user?.profile_image_url} status={user?.status} />
 
       <ActionsWrapper>
