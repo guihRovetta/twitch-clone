@@ -7,6 +7,7 @@ const DEFAULT_THEME_OBJECT = {
     bold: 'Inter_700Bold',
   },
   fontSize: {
+    xxsmall: moderateScale(11),
     xsmall: moderateScale(12),
     small: moderateScale(13),
     regular: moderateScale(14),
@@ -18,10 +19,10 @@ const DEFAULT_THEME_OBJECT = {
     body: moderateScale(15),
   },
   colors: {
-    primary: '#772ce8',
     red500: '#e91916',
     white100: '#ffffff',
     gray200: '#adadb8',
+    gray300: '#53535f',
     green200: '#00f593',
     orange200: '#FFAC3C',
   },
@@ -37,6 +38,7 @@ export const lightTheme = {
     text400: 'rgba(0, 0, 0, 0.7)',
     text300: '#53535f',
     gray100: 'rgba(0, 0, 0, 0.05)',
+    primary: '#772ce8',
   },
 };
 
@@ -50,5 +52,6 @@ export const darkTheme = {
     text400: 'rgba(255, 255, 255, 0.7)',
     text300: '#adadb8',
     gray100: 'rgba(255, 255, 255, 0.15)',
+    primary: '#bf94ff',
   },
 };
