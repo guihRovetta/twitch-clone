@@ -1,6 +1,6 @@
 import styled, { css, DefaultTheme } from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   width: 32px;
   height: 32px;
   align-items: center;

@@ -1,15 +1,16 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import { Container, UserImage, StatusIndicator, StatusType } from './styles';
 
-type AvatarProps = {
+type AvatarProps = TouchableOpacityProps & {
   uri: string;
   status: StatusType;
 };
 
-const Avatar = ({ uri, status }: AvatarProps) => {
+const Avatar = ({ uri, status, ...rest }: AvatarProps) => {
   return (
-    <Container>
+    <Container {...rest}>
       <UserImage
         source={{
           uri,
