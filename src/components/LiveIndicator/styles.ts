@@ -17,6 +17,10 @@ export const VisualIndicator = styled.View`
 `;
 
 const countIndicatorFontSizeModifiers = {
+  xxsmall: (theme: DefaultTheme) => css`
+    font-size: ${theme.fontSize.xxsmall}px;
+  `,
+
   xsmall: (theme: DefaultTheme) => css`
     font-size: ${theme.fontSize.xsmall}px;
   `,
@@ -32,7 +36,7 @@ export const CountIndicator = styled.Text<
   ${({ theme, color, size }) => css`
     text-align: center;
     color: ${color === 'dark' ? theme.colors.gray300 : theme.colors.white100};
-    font-family: ${theme.fonts.semibold};
+    font-family: ${theme.fonts.regular};
     margin-left: 6px;
 
     ${!!size && countIndicatorFontSizeModifiers[size](theme)};

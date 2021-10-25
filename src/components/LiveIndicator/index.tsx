@@ -5,7 +5,7 @@ import { Container, VisualIndicator, CountIndicator } from './styles';
 export type LiveIndicatorProps = {
   countValue: string;
   color?: 'light' | 'dark';
-  size?: 'xsmall' | 'small';
+  size?: 'xxsmall' | 'xsmall' | 'small';
 };
 
 const LiveIndicator = ({
