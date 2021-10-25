@@ -45,7 +45,7 @@ export const StreamerName = styled.Text`
 
 export const Title = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.colors.gray300};
+    color: ${theme.colors.text300};
     font-size: ${theme.fontSize.regular}px;
     font-family: ${theme.fonts.regular};
     margin: 2px 0;
@@ -54,7 +54,7 @@ export const Title = styled.Text`
 
 export const Category = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.colors.gray300};
+    color: ${theme.colors.text300};
     font-size: ${theme.fontSize.regular}px;
     font-family: ${theme.fonts.regular};
     margin-bottom: 2px;

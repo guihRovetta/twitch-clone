@@ -4,10 +4,10 @@ export const Container = styled.Pressable``;
 
 export const ChipWrapper = styled.View`
   ${({ theme }) => css`
-    padding: 2px 8px;
+    padding: 4px 8px;
     background-color: ${theme.colors.gray100};
     align-self: baseline;
-    border-radius: 8px;
+    border-radius: 16px;
   `}
 `;
 
