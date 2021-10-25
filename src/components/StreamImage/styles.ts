@@ -4,14 +4,14 @@ import styled, { css } from 'styled-components/native';
 export const Container = styled.TouchableOpacity``;
 
 export const CustomImage = styled.Image`
-  width: 141px;
-  height: 79px;
+  width: 100%;
+  height: 100%;
   border-radius: 2px;
 `;
 
 export const Skeleton = styled(Placeholder)`
-  width: 141px;
-  height: 79px;
+  width: 100%;
+  height: 100%;
   margin-right: 16px;
   opacity: 0.2;
 `;

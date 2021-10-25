@@ -18,7 +18,7 @@ const StreamImage = ({ url, name, isLoading }: StreamImageProps) => {
 
     (async () => {
       try {
-        await Image.prefetch(url?.replace('{width}x{height}', '141x79'));
+        await Image.prefetch(url?.replace('{width}x{height}', '113x63'));
 
         setLoading(false);
       } catch (error) {
@@ -38,7 +38,7 @@ const StreamImage = ({ url, name, isLoading }: StreamImageProps) => {
       }
     >
       <CustomImage
-        source={{ uri: url && url?.replace('{width}x{height}', '141x79') }}
+        source={{ uri: url && url?.replace('{width}x{height}', '113x63') }}
         resizeMode="cover"
       />
     </Container>
