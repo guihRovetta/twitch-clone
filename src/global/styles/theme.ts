@@ -11,6 +11,7 @@ const DEFAULT_THEME_OBJECT = {
     xsmall: moderateScale(12),
     small: moderateScale(13),
     regular: moderateScale(14),
+    xregular: moderateScale(16),
     large: moderateScale(18),
     xlarge: moderateScale(24),
   },
@@ -25,6 +26,9 @@ const DEFAULT_THEME_OBJECT = {
     gray300: '#53535f',
     green200: '#00f593',
     orange200: '#FFAC3C',
+  },
+  gradients: {
+    transparentBlack: ['transparent', 'rgba(0, 0, 0, 0.7)'],
   },
 };
 
