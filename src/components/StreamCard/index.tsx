@@ -23,7 +23,8 @@ type ChipType = {
   key: string;
 };
 
-type StreamType = {
+export type StreamType = {
+  id: string;
   streamImageUrl: string;
   countValue: string;
   avatar: string;
