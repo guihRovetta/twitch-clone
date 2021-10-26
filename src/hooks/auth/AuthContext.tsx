@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { makeRedirectUri, revokeAsync, startAsync } from 'expo-auth-session';
 import { generateRandom } from 'expo-auth-session/build/PKCE';
+import * as SecureStore from 'expo-secure-store';
 import React, { useEffect, createContext, useState, ReactNode } from 'react';
 
 import { StatusType } from '../../components/Avatar/styles';
@@ -46,6 +47,7 @@ type TwitchGetUser = {
 };
 
 const USER_STORAGE_KEY = '@twitch-clone:user';
+const USER_TOKEN_EXPO_SECURE_KEY = 'twitch-clone.userToken';
 
 export const AuthContext = createContext({} as AuthContextType);
 
@@ -80,6 +82,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const saveUserToken = (access_token: string) => {
+    api.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+    setUserToken(access_token);
+  };
+
   const signIn = async () => {
     try {
       setIsLoggingIn(true);
@@ -110,7 +117,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
         const { access_token } = authResponse.params || {};
 
-        api.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+        saveUserToken(access_token);
+
+        await SecureStore.setItemAsync(
+          USER_TOKEN_EXPO_SECURE_KEY,
+          access_token
+        );
 
         const userResponse = await api.get<TwitchGetUser>('/users');
 
@@ -124,11 +136,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           profile_image_url,
           status: 'online',
         });
-
-        setUserToken(access_token);
       }
     } catch (error) {
-      throw new Error();
+      throw new Error(error);
     } finally {
       setIsLoggingIn(false);
     }
@@ -141,6 +151,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         { token: userToken, clientId: TWITCH_CLIENT_ID },
         { revocationEndpoint: twitchEndpoints.revocation }
       );
+
+      await SecureStore.deleteItemAsync(USER_TOKEN_EXPO_SECURE_KEY);
     } catch (error) {
     } finally {
       removeUser();
@@ -156,6 +168,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     api.defaults.headers['Client-Id'] = TWITCH_CLIENT_ID;
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const secureStoreUserToken = await SecureStore.getItemAsync(
+          USER_TOKEN_EXPO_SECURE_KEY
+        );
+        saveUserToken(secureStoreUserToken);
+      } catch (error) {
+        console.log('Erro no SecureStore', error);
+      }
+    })();
   }, []);
 
   useEffect(() => {
