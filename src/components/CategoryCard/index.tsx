@@ -5,7 +5,8 @@ import CategoryImage from '../CategoryImage';
 import LiveIndicator from '../LiveIndicator';
 import { Container, CategoryTitle } from './styles';
 
-type CategoryType = {
+export type CategoryType = {
+  id: string;
   name: string;
   url: string;
   isLoading?: boolean;
