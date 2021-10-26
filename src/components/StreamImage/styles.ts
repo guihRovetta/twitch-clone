@@ -6,7 +6,6 @@ export const Container = styled.TouchableOpacity``;
 export const CustomImage = styled.Image`
   width: 100%;
   height: 100%;
-  border-radius: 2px;
 `;
 
 export const Skeleton = styled(Placeholder)`

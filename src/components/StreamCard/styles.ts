@@ -64,10 +64,11 @@ export const Category = styled.Text`
 export const ChipContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
   margin-top: 2px;
 `;
 
 export const ChipWrapper = styled.View`
-  margin: 0 8px 8px 0;
+  margin: 0 4px 4px 0;
 `;
