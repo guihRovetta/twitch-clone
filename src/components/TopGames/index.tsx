@@ -13,8 +13,16 @@ type TwitchGetTopGames = {
   name: string;
 };
 
+const EMPTY_TOP_GAMES = [
+  { id: '1', name: '', url: '', countValue: '' },
+  { id: '2', name: '', url: '', countValue: '' },
+  { id: '3', name: '', url: '', countValue: '' },
+  { id: '4', name: '', url: '', countValue: '' },
+  { id: '5', name: '', url: '', countValue: '' },
+];
+
 const TopGames = () => {
-  const [topGames, setTopGames] = useState<CategoryType[]>([]);
+  const [topGames, setTopGames] = useState<CategoryType[]>(EMPTY_TOP_GAMES);
   const [isLoadingTopGames, setIsLoadingTopGames] = useState(true);
 
   const getTopGames = async () => {
