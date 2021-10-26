@@ -17,7 +17,7 @@ const CategoryImage = ({ url, isLoading }: CategoryImageProps) => {
 
     (async () => {
       try {
-        await Image.prefetch(url?.replace('{width}x{height}', '450x600'));
+        await Image.prefetch(url?.replace('{width}x{height}', '127x170'));
 
         setLoading(false);
       } catch (error) {
@@ -32,7 +32,7 @@ const CategoryImage = ({ url, isLoading }: CategoryImageProps) => {
     </Skeleton>
   ) : (
     <CustomImage
-      source={{ uri: url && url?.replace('{width}x{height}', '450x600') }}
+      source={{ uri: url && url?.replace('{width}x{height}', '127x170') }}
       resizeMode="cover"
     />
   );

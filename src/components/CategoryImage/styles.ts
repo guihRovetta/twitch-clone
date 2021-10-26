@@ -2,14 +2,13 @@ import { Placeholder, PlaceholderMedia } from 'rn-placeholder';
 import styled, { css } from 'styled-components/native';
 
 export const CustomImage = styled.Image`
-  width: 150px;
-  height: 200px;
-  border-radius: 2px;
+  width: 100%;
+  height: 170px;
 `;
 
 export const Skeleton = styled(Placeholder)`
-  width: 150px;
-  height: 200px;
+  width: 100%;
+  height: 170px;
   margin-right: 16px;
   opacity: 0.2;
 `;
