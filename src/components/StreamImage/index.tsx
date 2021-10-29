@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Alert, Linking } from 'react-native';
+import { Image, Linking } from 'react-native';
 import { Fade } from 'rn-placeholder';
 
 import { Container, CustomImage, Skeleton, SkeletonMedia } from './styles';
@@ -22,7 +22,7 @@ const StreamImage = ({ url, name, isLoading }: StreamImageProps) => {
 
         setLoading(false);
       } catch (error) {
-        Alert.alert('Erro StreamImage');
+        console.error(error);
       }
     })();
   }, [isLoading]);
