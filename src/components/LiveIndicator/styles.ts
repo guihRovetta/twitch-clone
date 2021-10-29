@@ -35,7 +35,7 @@ export const CountIndicator = styled.Text<
 >`
   ${({ theme, color, size }) => css`
     text-align: center;
-    color: ${color === 'dark' ? theme.colors.gray300 : theme.colors.white100};
+    color: ${color === 'dark' ? theme.colors.text300 : theme.colors.white100};
     font-family: ${theme.fonts.regular};
     margin-left: 6px;
 
