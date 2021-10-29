@@ -66,7 +66,7 @@ export const ChipContainer = styled.View`
   align-items: center;
   flex-wrap: nowrap;
   overflow: hidden;
-  margin-top: 2px;
+  margin-top: 4px;
 `;
 
 export const ChipWrapper = styled.View`

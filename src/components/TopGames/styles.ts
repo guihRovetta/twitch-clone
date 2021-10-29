@@ -9,7 +9,8 @@ export const CategoryFlatList = styled(
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: {
-    paddingHorizontal: 16,
+    marginTop: 8,
+    marginBottom: 16,
   },
 })``;
 

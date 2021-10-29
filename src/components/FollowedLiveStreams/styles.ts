@@ -8,7 +8,8 @@ export const FollowedLiveStreamsFlatList = styled(
 ).attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
-    paddingHorizontal: 16,
+    marginTop: 8,
+    marginBottom: 16,
   },
 })``;
 
