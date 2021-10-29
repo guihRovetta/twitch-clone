@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useAuth } from '../../hooks/auth/useAuth';
+import { useThemeMode } from '../../hooks/themeMode/useThemeMode';
 import Avatar from '../Avatar';
 import {
   Container,
@@ -14,9 +15,10 @@ import {
 
 const Header = () => {
   const { user } = useAuth();
+  const { themeMode } = useThemeMode();
 
   return (
-    <Container intensity={10}>
+    <Container intensity={100} tint={themeMode === 'light' ? 'light' : 'dark'}>
       <Avatar uri={user?.profile_image_url} status={user?.status} />
 
       <ActionsWrapper>

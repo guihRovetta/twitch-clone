@@ -8,6 +8,11 @@ export const Container = styled(BlurView)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 `;
 
 export const ActionsWrapper = styled.View`
