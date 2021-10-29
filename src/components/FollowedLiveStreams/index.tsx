@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/auth/useAuth';
 import { api } from '../../services/api';
 import { formatViewersCount } from '../../utils/formatViewersCount';
 import StreamCard, { StreamType } from '../StreamCard';
+import { EMPTY_FOLLOWED_LIVE_STREAMS } from './mock';
 import {
   FollowedLiveStreamsFlatList,
   FollowedLiveStreamsFlatListSeparator,
@@ -22,7 +23,7 @@ type TwitchGetFollowedStreams = {
 
 const FollowedLiveStreams = () => {
   const [followedLiveStreams, setFollowedLiveStreams] = useState<StreamType[]>(
-    []
+    EMPTY_FOLLOWED_LIVE_STREAMS
   );
   const [isLoadingFollowedLiveStreams, setIsLoadingFollowedLiveStreams] =
     useState(true);
@@ -33,7 +34,7 @@ const FollowedLiveStreams = () => {
     userFollowedStreamsData: TwitchGetFollowedStreams[]
   ) => {
     return Promise.all(
-      userFollowedStreamsData.map(async (item) => {
+      userFollowedStreamsData?.map(async (item) => {
         const { id, thumbnail_url, viewer_count, user_name, title, game_name } =
           item || {};
 
@@ -67,7 +68,7 @@ const FollowedLiveStreams = () => {
           return {
             ...formattedObject,
             chips: tags?.slice(0, 2),
-            avatar: data.data[0].profile_image_url as string,
+            avatar: data?.data[0]?.profile_image_url as string,
           };
         } catch (error) {
           return {
