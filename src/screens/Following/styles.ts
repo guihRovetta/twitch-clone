@@ -15,6 +15,7 @@ export const FollowingFlatList = styled(
 ).attrs({
   contentContainerStyle: {
     paddingHorizontal: 16,
-    paddingBottom: 16,
+    paddingTop: 64,
+    paddingBottom: 8,
   },
 })``;

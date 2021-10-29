@@ -48,14 +48,14 @@ const Following = () => {
 
   return (
     <Container>
-      <Header />
-
       <FollowingFlatList
         data={data}
         renderItem={({ item }) => item?.render()}
         keyExtractor={(item) => item?.key}
         stickyHeaderIndices={indices}
       />
+
+      <Header />
     </Container>
   );
 };
