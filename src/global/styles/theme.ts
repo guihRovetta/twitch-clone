@@ -14,6 +14,7 @@ const DEFAULT_THEME_OBJECT = {
     xregular: moderateScale(16),
     large: moderateScale(18),
     xlarge: moderateScale(24),
+    xxlarge: moderateScale(30),
   },
   lineHeight: {
     heading: moderateScale(12),
