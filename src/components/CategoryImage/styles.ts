@@ -18,6 +18,5 @@ export const SkeletonMedia = styled(PlaceholderMedia)`
     color: ${theme.colors.gray200};
     flex: 1;
     width: 100%;
-    border-radius: 10px;
   `}
 `;

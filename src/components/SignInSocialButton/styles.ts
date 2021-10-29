@@ -17,7 +17,7 @@ export const IconContainer = styled.View`
     height: 100%;
     justify-content: center;
     align-items: center;
-    border-color: ${theme.colors.background};
+    border-color: ${theme.colors.primary};
     border-right-width: 1px;
     padding: 16px;
   `}
