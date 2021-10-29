@@ -10,12 +10,14 @@ export const Container = styled.View`
   `}
 `;
 
+const HEADER_HEIGHT = 64;
+
 export const FollowingFlatList = styled(
   FlatList as new () => FlatList<FollowingItem>
 ).attrs({
   contentContainerStyle: {
     paddingHorizontal: 16,
-    paddingTop: 64,
-    paddingBottom: 8,
+    marginTop: HEADER_HEIGHT,
+    paddingBottom: HEADER_HEIGHT + 8,
   },
 })``;
