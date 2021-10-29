@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
 
 import { api } from '../../services/api';
 import { formatViewersCount } from '../../utils/formatViewersCount';
@@ -46,10 +45,7 @@ const TopGames = () => {
 
       setTopGames(formattedData);
     } catch (error) {
-      Alert.alert(
-        'Erro Top Games',
-        'Ocorreu um erro ao buscar os jogos mais assistidos agora na Twitch'
-      );
+      console.error(error);
     } finally {
       setIsLoadingTopGames(false);
     }

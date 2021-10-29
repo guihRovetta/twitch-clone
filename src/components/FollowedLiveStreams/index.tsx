@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
 
 import { useAuth } from '../../hooks/auth/useAuth';
 import { api } from '../../services/api';
@@ -91,10 +90,7 @@ const FollowedLiveStreams = () => {
 
       setFollowedLiveStreams(formattedData);
     } catch (error) {
-      Alert.alert(
-        'Erro User Followed Streams',
-        'Ocorreu um erro ao buscar as informações das streams ao vivo que o usuário segue'
-      );
+      console.error(error);
     } finally {
       setIsLoadingFollowedLiveStreams(false);
     }
