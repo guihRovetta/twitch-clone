@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
 
-import FollowedLiveStreams from '../../components/FollowedLiveStreams';
 import Header from '../../components/Header';
+import LiveStreams from '../../components/LiveStreams';
 import PageHeading from '../../components/PageHeading';
 import SectionTitle from '../../components/SectionTitle';
 import TopGames from '../../components/TopGames';
+import { useAuth } from '../../hooks/auth/useAuth';
 import { Container, FollowingFlatList } from './styles';
 
 export type FollowingItem = {
@@ -14,6 +15,8 @@ export type FollowingItem = {
 };
 
 const Following = () => {
+  const { user } = useAuth();
+
   const { data, indices } = useMemo(() => {
     const items: FollowingItem[] = [
       {
@@ -29,11 +32,26 @@ const Following = () => {
       { key: 'top_games_component', render: () => <TopGames /> },
 
       {
-        key: 'live_channels_title',
+        key: 'followed_live_channels_title',
         render: () => <SectionTitle>Seus canais ao vivo</SectionTitle>,
         isTitle: true,
       },
-      { key: 'live_channels_component', render: () => <FollowedLiveStreams /> },
+      {
+        key: 'followed_live_channels_component',
+        render: () => (
+          <LiveStreams apiUrl={`/streams/followed?user_id=${user?.id}`} />
+        ),
+      },
+
+      {
+        key: 'top_live_channels_title',
+        render: () => <SectionTitle>Top canais ao vivo</SectionTitle>,
+        isTitle: true,
+      },
+      {
+        key: 'top_live_channels_component',
+        render: () => <LiveStreams apiUrl="/streams" />,
+      },
     ];
 
     const indices: number[] = [];
