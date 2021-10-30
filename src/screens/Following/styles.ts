@@ -16,7 +16,6 @@ export const FollowingFlatList = styled(
   FlatList as new () => FlatList<FollowingItem>
 ).attrs({
   contentContainerStyle: {
-    paddingHorizontal: 16,
     marginTop: HEADER_HEIGHT,
     paddingBottom: HEADER_HEIGHT + 8,
   },

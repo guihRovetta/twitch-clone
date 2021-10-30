@@ -7,10 +7,6 @@ export const FollowedLiveStreamsFlatList = styled(
   FlatList as new () => FlatList<StreamType>
 ).attrs({
   showsVerticalScrollIndicator: false,
-  contentContainerStyle: {
-    marginTop: 8,
-    marginBottom: 16,
-  },
 })``;
 
 export const FollowedLiveStreamsFlatListSeparator = styled.View`

@@ -11,6 +11,7 @@ export const CategoryFlatList = styled(
   contentContainerStyle: {
     marginTop: 8,
     marginBottom: 16,
+    paddingHorizontal: 16,
   },
 })``;
 

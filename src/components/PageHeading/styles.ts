@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
-  padding: 8px 0;
+  padding: 8px 16px;
 `;
 
 export const PageHeadingText = styled.Text`
