@@ -23,9 +23,14 @@ const TopGames = () => {
         '/games/top'
       );
 
+      let randomCountValue = 400000;
+
       const formattedData: CategoryType[] = data?.data?.map(
         ({ id, name, box_art_url }) => {
-          const randomCountValue = generateRamdomNumber(10, 150000);
+          randomCountValue = generateRamdomNumber(
+            randomCountValue / 2,
+            randomCountValue
+          );
 
           return {
             id,
