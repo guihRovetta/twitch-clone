@@ -4,22 +4,25 @@ import {
   AntDesign,
 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { BlurView } from 'expo-blur';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { useTheme } from 'styled-components';
 
+import NotFound from '../components/NotFound';
+import Profile from '../components/Profile';
 import { useThemeMode } from '../hooks/themeMode/useThemeMode';
 import Following from '../screens/Following';
 
-const { Navigator, Screen } = createBottomTabNavigator();
+const BottomTab = createBottomTabNavigator();
 
-const PrivateRoutes = () => {
+const MainTabs = () => {
   const theme = useTheme();
   const { themeMode } = useThemeMode();
 
   return (
-    <Navigator
+    <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarIconStyle: { width: 20, height: 20 },
@@ -41,7 +44,7 @@ const PrivateRoutes = () => {
         ),
       }}
     >
-      <Screen
+      <BottomTab.Screen
         name="Seguindo"
         component={Following}
         options={{
@@ -55,9 +58,9 @@ const PrivateRoutes = () => {
         }}
       />
 
-      <Screen
+      <BottomTab.Screen
         name="Descubra"
-        component={Following}
+        component={NotFound}
         options={{
           tabBarIcon: ({ focused }) => (
             <Ionicons
@@ -69,9 +72,9 @@ const PrivateRoutes = () => {
         }}
       />
 
-      <Screen
+      <BottomTab.Screen
         name="Procurar"
-        component={Following}
+        component={NotFound}
         options={{
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
@@ -82,7 +85,28 @@ const PrivateRoutes = () => {
           ),
         }}
       />
-    </Navigator>
+    </BottomTab.Navigator>
+  );
+};
+
+export type PrivateRoutesStackProps = {
+  Main: undefined;
+  Profile: undefined;
+};
+
+const Stack = createStackNavigator<PrivateRoutesStackProps>();
+
+const PrivateRoutes = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Main"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Main" component={MainTabs} />
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name="Profile" component={Profile} />
+      </Stack.Group>
+    </Stack.Navigator>
   );
 };
 
