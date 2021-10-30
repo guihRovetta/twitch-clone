@@ -17,6 +17,6 @@ export const FollowingFlatList = styled(
 ).attrs({
   contentContainerStyle: {
     marginTop: HEADER_HEIGHT,
-    paddingBottom: HEADER_HEIGHT + 8,
+    paddingBottom: HEADER_HEIGHT + HEADER_HEIGHT / 2 + 8,
   },
 })``;
