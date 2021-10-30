@@ -1,7 +1,9 @@
+import { NavigationProp, useNavigation } from '@react-navigation/core';
 import React from 'react';
 
 import { useAuth } from '../../hooks/auth/useAuth';
 import { useThemeMode } from '../../hooks/themeMode/useThemeMode';
+import { PrivateRoutesStackProps } from '../../routes/private.routes';
 import Avatar from '../Avatar';
 import {
   Container,
@@ -13,13 +15,21 @@ import {
   SearchIcon,
 } from './styles';
 
+type NavigationProps = NavigationProp<PrivateRoutesStackProps, 'Main'>;
+
 const Header = () => {
   const { user } = useAuth();
   const { themeMode } = useThemeMode();
 
+  const navigation = useNavigation<NavigationProps>();
+
   return (
     <Container intensity={100} tint={themeMode === 'light' ? 'light' : 'dark'}>
-      <Avatar uri={user?.profile_image_url} status={user?.status} />
+      <Avatar
+        uri={user?.profile_image_url}
+        status={user?.status}
+        onPress={() => navigation.navigate('Profile')}
+      />
 
       <ActionsWrapper>
         <ActionButton>
