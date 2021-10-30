@@ -1,6 +1,6 @@
 import { StreamType } from '../StreamCard';
 
-export const EMPTY_FOLLOWED_LIVE_STREAMS: StreamType[] = [
+export const EMPTY_LIVE_STREAMS: StreamType[] = [
   {
     id: '1',
     streamImageUrl: null,
