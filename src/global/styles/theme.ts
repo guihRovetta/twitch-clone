@@ -44,6 +44,11 @@ export const lightTheme = {
     text300: '#53535f',
     gray100: 'rgba(0, 0, 0, 0.05)',
     primary: '#772ce8',
+
+    modal: {
+      background: '#f7f7f8',
+      highlight: '#ffffff',
+    },
   },
 };
 
@@ -58,5 +63,10 @@ export const darkTheme = {
     text300: '#adadb8',
     gray100: 'rgba(255, 255, 255, 0.15)',
     primary: '#bf94ff',
+
+    modal: {
+      background: '#070708',
+      highlight: '#1c1c1e',
+    },
   },
 };
