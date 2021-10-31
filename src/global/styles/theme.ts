@@ -65,8 +65,8 @@ export const darkTheme = {
     primary: '#bf94ff',
 
     modal: {
-      background: '#070708',
-      highlight: '#1c1c1e',
+      background: '#0C0C0C',
+      highlight: '#181819',
     },
   },
 };
