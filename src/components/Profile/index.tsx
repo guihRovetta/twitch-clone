@@ -2,8 +2,11 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 
 import { PrivateRoutesStackProps } from '../../routes/private.routes';
+import GeneralProfileCard from '../GeneralProfileCard';
+import MyChannelProfileCard from '../MyChannelProfileCard';
 import PageHeader from '../PageHeader';
-import { Container } from './styles';
+import UserCard from '../UserCard';
+import { Container, CardsScrollView } from './styles';
 
 type NavigationProps = NavigationProp<PrivateRoutesStackProps, 'Main'>;
 
@@ -17,6 +20,14 @@ const Profile = () => {
   return (
     <Container>
       <PageHeader title="Conta" onPressOkButton={handleCloseProfileModal} />
+
+      <CardsScrollView>
+        <UserCard />
+
+        <GeneralProfileCard />
+
+        <MyChannelProfileCard />
+      </CardsScrollView>
     </Container>
   );
 };

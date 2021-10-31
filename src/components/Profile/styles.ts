@@ -7,3 +7,7 @@ export const Container = styled.View`
     padding: 16px;
   `};
 `;
+
+export const CardsScrollView = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+})``;
