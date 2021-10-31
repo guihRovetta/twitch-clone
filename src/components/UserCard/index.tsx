@@ -25,7 +25,7 @@ const UserCard = () => {
 
   return (
     <Container>
-      <ModalCard>
+      <ModalCard hasPadding>
         <AvatarWrapper>
           <Avatar
             uri={profile_image_url}
