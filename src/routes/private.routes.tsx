@@ -11,9 +11,9 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from 'styled-components';
 
 import NotFound from '../components/NotFound';
-import Profile from '../components/Profile';
 import { useThemeMode } from '../hooks/themeMode/useThemeMode';
 import Following from '../screens/Following';
+import Profile from '../screens/Profile';
 
 const BottomTab = createBottomTabNavigator();
 

@@ -1,11 +1,11 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 
+import GeneralProfileCard from '../../components/GeneralProfileCard';
+import MyChannelProfileCard from '../../components/MyChannelProfileCard';
+import PageHeader from '../../components/PageHeader';
+import UserCard from '../../components/UserCard';
 import { PrivateRoutesStackProps } from '../../routes/private.routes';
-import GeneralProfileCard from '../GeneralProfileCard';
-import MyChannelProfileCard from '../MyChannelProfileCard';
-import PageHeader from '../PageHeader';
-import UserCard from '../UserCard';
 import { Container, CardsScrollView } from './styles';
 
 type NavigationProps = NavigationProp<PrivateRoutesStackProps, 'Main'>;
