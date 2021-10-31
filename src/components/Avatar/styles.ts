@@ -1,17 +1,40 @@
 import styled, { css, DefaultTheme } from 'styled-components/native';
 
-export const Container = styled.TouchableOpacity`
-  width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+const sizeModifiers = {
+  normal: () => css`
+    width: 32px;
+    height: 32px;
+  `,
+
+  large: () => css`
+    width: 48px;
+    height: 48px;
+  `,
+};
+
+export type SizeType = 'normal' | 'large';
+
+type ContainerProps = {
+  size?: SizeType;
+};
+
+export const Container = styled.TouchableOpacity<ContainerProps>`
+  ${({ size }) => css`
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    ${!!size && sizeModifiers[size]()};
+  `}
 `;
 
-export const UserImage = styled.Image`
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
+export const UserImage = styled.Image<ContainerProps>`
+  ${({ size }) => css`
+    width: 100%;
+    height: 100%;
+
+    border-radius: ${size === 'normal' ? '16' : '24'}px;
+  `}
 `;
 
 const statusIndicatorModifiers = {
