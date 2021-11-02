@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useAuth } from '../../hooks/auth/useAuth';
 import { PrivateRoutesStackProps } from '../../routes/private.routes';
+import { getUserStatus } from '../../utils/getUserStatus';
 import Avatar from '../Avatar';
 import Button from '../Button';
 import ModalCard from '../ModalCard';
@@ -39,7 +40,7 @@ const UserCard = () => {
 
         <InfoWrapper>
           <UserName>{display_name}</UserName>
-          <UserStatus>{status}</UserStatus>
+          <UserStatus>{getUserStatus(status)?.label}</UserStatus>
         </InfoWrapper>
       </ModalCard>
     </Container>
