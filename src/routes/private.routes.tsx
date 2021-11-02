@@ -12,6 +12,7 @@ import { useTheme } from 'styled-components';
 
 import NotFound from '../components/NotFound';
 import { useThemeMode } from '../hooks/themeMode/useThemeMode';
+import Appearance from '../screens/Appearance';
 import Following from '../screens/Following';
 import Profile from '../screens/Profile';
 
@@ -92,6 +93,7 @@ const MainTabs = () => {
 export type PrivateRoutesStackProps = {
   Main: undefined;
   Profile: undefined;
+  Appearance: undefined;
 };
 
 const Stack = createStackNavigator<PrivateRoutesStackProps>();
@@ -105,6 +107,7 @@ const PrivateRoutes = () => {
       <Stack.Screen name="Main" component={MainTabs} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Appearance" component={Appearance} />
       </Stack.Group>
     </Stack.Navigator>
   );
