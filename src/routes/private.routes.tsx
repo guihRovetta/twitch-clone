@@ -14,6 +14,7 @@ import NotFound from '../components/NotFound';
 import { useThemeMode } from '../hooks/themeMode/useThemeMode';
 import Appearance from '../screens/Appearance';
 import Following from '../screens/Following';
+import Presence from '../screens/Presence';
 import Profile from '../screens/Profile';
 
 const BottomTab = createBottomTabNavigator();
@@ -94,6 +95,7 @@ export type PrivateRoutesStackProps = {
   Main: undefined;
   Profile: undefined;
   Appearance: undefined;
+  Presence: undefined;
 };
 
 const Stack = createStackNavigator<PrivateRoutesStackProps>();
@@ -108,6 +110,7 @@ const PrivateRoutes = () => {
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Appearance" component={Appearance} />
+        <Stack.Screen name="Presence" component={Presence} />
       </Stack.Group>
     </Stack.Navigator>
   );
