@@ -27,6 +27,10 @@ const GeneralProfileCard = () => {
     navigation.navigate('Presence');
   };
 
+  const handleNavigateToConfiguration = () => {
+    navigation.navigate('Configuration');
+  };
+
   const generalProfileItems = [
     {
       key: 'subscriptions',
@@ -54,7 +58,7 @@ const GeneralProfileCard = () => {
       icon: <GearIcon name="cog-outline" />,
       label: 'Configurações da conta',
       hasRightIcon: true,
-      onPress: () => {},
+      onPress: () => handleNavigateToConfiguration(),
     },
     {
       key: 'appearance',
