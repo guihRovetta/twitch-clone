@@ -23,6 +23,10 @@ const GeneralProfileCard = () => {
     navigation.navigate('Appearance');
   };
 
+  const handleNavigateToPresence = () => {
+    navigation.navigate('Presence');
+  };
+
   const generalProfileItems = [
     {
       key: 'subscriptions',
@@ -64,7 +68,7 @@ const GeneralProfileCard = () => {
       icon: <EyeIcon name="eye" />,
       label: 'Definir presença',
       hasRightIcon: true,
-      onPress: () => {},
+      onPress: () => handleNavigateToPresence(),
     },
   ];
 
