@@ -4,8 +4,9 @@ import { generateRandom } from 'expo-auth-session/build/PKCE';
 import * as SecureStore from 'expo-secure-store';
 import React, { useEffect, createContext, useState, ReactNode } from 'react';
 
-import { StatusType } from '../../components/Avatar/styles';
 import { api } from '../../services/api';
+
+export type StatusType = 'online' | 'invisible' | 'busy';
 
 type User = {
   id: number;
