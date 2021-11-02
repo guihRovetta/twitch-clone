@@ -13,6 +13,7 @@ import { useTheme } from 'styled-components';
 import NotFound from '../components/NotFound';
 import { useThemeMode } from '../hooks/themeMode/useThemeMode';
 import Appearance from '../screens/Appearance';
+import Configuration from '../screens/Configuration';
 import Following from '../screens/Following';
 import Presence from '../screens/Presence';
 import Profile from '../screens/Profile';
@@ -96,6 +97,7 @@ export type PrivateRoutesStackProps = {
   Profile: undefined;
   Appearance: undefined;
   Presence: undefined;
+  Configuration: undefined;
 };
 
 const Stack = createStackNavigator<PrivateRoutesStackProps>();
@@ -111,6 +113,7 @@ const PrivateRoutes = () => {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Appearance" component={Appearance} />
         <Stack.Screen name="Presence" component={Presence} />
+        <Stack.Screen name="Configuration" component={Configuration} />
       </Stack.Group>
     </Stack.Navigator>
   );
