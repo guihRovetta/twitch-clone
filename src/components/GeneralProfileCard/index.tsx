@@ -1,5 +1,7 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 
+import { PrivateRoutesStackProps } from '../../routes/private.routes';
 import ModalCard from '../ModalCard';
 import ProfileItem from '../ProfileItem';
 import {
@@ -12,7 +14,15 @@ import {
   EyeIcon,
 } from './styles';
 
+type NavigationProps = NavigationProp<PrivateRoutesStackProps, 'Main'>;
+
 const GeneralProfileCard = () => {
+  const navigation = useNavigation<NavigationProps>();
+
+  const handleNavigateToAppearance = () => {
+    navigation.navigate('Appearance');
+  };
+
   const generalProfileItems = [
     {
       key: 'subscriptions',
@@ -47,7 +57,7 @@ const GeneralProfileCard = () => {
       icon: <MoonIcon name="moon-outline" />,
       label: 'Aparência',
       hasRightIcon: true,
-      onPress: () => {},
+      onPress: () => handleNavigateToAppearance(),
     },
     {
       key: 'status',
