@@ -5,6 +5,7 @@ import { useColorScheme } from 'react-native';
 type ThemeModeType = 'light' | 'dark';
 
 const THEME_MODE_STORAGE_KEY = '@twitch-clone:themeMode';
+const IS_SYSTEM_THEME_STORAGE_KEY = '@twitch-clone:isSystemTheme';
 
 type ThemeModeProviderProps = {
   children: ReactNode;
@@ -17,17 +18,29 @@ type ThemeModeContextType = {
   toggleTheme: () => void;
   componentMounted: boolean;
   setMode: (mode: ThemeModeType) => Promise<void>;
-  setToSystemPreferedTheme: () => void;
+  setToSystemPreferedTheme: (isSystem: boolean) => void;
+  isSystemTheme: boolean;
 };
 
 export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
   const [themeMode, setThemeMode] = useState<ThemeModeType>('light');
   const [componentMounted, setComponentMounted] = useState(false);
+  const [isSystemTheme, setIsSystemTheme] = useState(true);
 
   const systemPreferedTheme = useColorScheme();
 
-  const setToSystemPreferedTheme = () => {
-    setMode(systemPreferedTheme);
+  const setToSystemPreferedTheme = async (value: boolean) => {
+    try {
+      await AsyncStorage.setItem(
+        IS_SYSTEM_THEME_STORAGE_KEY,
+        JSON.stringify(value)
+      );
+      setIsSystemTheme(value);
+      if (!value) return;
+      setMode(systemPreferedTheme);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const setMode = async (mode: ThemeModeType) => {
@@ -62,9 +75,18 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (!systemPreferedTheme) return;
+    (async () => {
+      try {
+        const isSystemTheme = await AsyncStorage.getItem(
+          IS_SYSTEM_THEME_STORAGE_KEY
+        );
+        if (!systemPreferedTheme && JSON.parse(isSystemTheme)) return;
 
-    setToSystemPreferedTheme();
+        setToSystemPreferedTheme(true);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, [systemPreferedTheme]);
 
   return (
@@ -75,6 +97,7 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
         componentMounted,
         setMode,
         setToSystemPreferedTheme,
+        isSystemTheme,
       }}
     >
       {children}
