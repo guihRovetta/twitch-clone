@@ -1,5 +1,7 @@
 import styled, { css, DefaultTheme } from 'styled-components/native';
 
+import { StatusType } from '../../hooks/auth/AuthContext';
+
 const sizeModifiers = {
   normal: () => css`
     width: 32px;
@@ -50,8 +52,6 @@ const statusIndicatorModifiers = {
     background-color: ${theme.colors.orange200};
   `,
 };
-
-export type StatusType = 'online' | 'invisible' | 'busy';
 
 type StatusIndicatorProps = {
   status: StatusType;

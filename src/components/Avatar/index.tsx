@@ -1,13 +1,8 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 
-import {
-  Container,
-  UserImage,
-  StatusIndicator,
-  StatusType,
-  SizeType,
-} from './styles';
+import { StatusType } from '../../hooks/auth/AuthContext';
+import { Container, UserImage, StatusIndicator, SizeType } from './styles';
 
 type AvatarProps = TouchableOpacityProps & {
   uri: string;
