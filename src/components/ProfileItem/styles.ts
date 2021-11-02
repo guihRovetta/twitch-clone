@@ -11,7 +11,7 @@ type ContainerProps = {
 };
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
-  ${({ theme, hasBorderBottom }) => css`
+  ${({ hasBorderBottom }) => css`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
