@@ -16,6 +16,8 @@ type ThemeModeContextType = {
   themeMode: ThemeModeType;
   toggleTheme: () => void;
   componentMounted: boolean;
+  setMode: (mode: ThemeModeType) => Promise<void>;
+  setToSystemPreferedTheme: () => void;
 };
 
 export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
@@ -23,6 +25,10 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
   const [componentMounted, setComponentMounted] = useState(false);
 
   const systemPreferedTheme = useColorScheme();
+
+  const setToSystemPreferedTheme = () => {
+    setMode(systemPreferedTheme);
+  };
 
   const setMode = async (mode: ThemeModeType) => {
     try {
@@ -58,7 +64,7 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
   useEffect(() => {
     if (!systemPreferedTheme) return;
 
-    setMode(systemPreferedTheme);
+    setToSystemPreferedTheme();
   }, [systemPreferedTheme]);
 
   return (
@@ -67,6 +73,8 @@ export const ThemeModeProvider = ({ children }: ThemeModeProviderProps) => {
         themeMode,
         toggleTheme,
         componentMounted,
+        setMode,
+        setToSystemPreferedTheme,
       }}
     >
       {children}
