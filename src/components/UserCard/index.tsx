@@ -35,7 +35,9 @@ const UserCard = () => {
             onPress={() => navigation.navigate('Profile')}
           />
 
-          <Button icon={<LiveIcon name="radio" />}>Entrar ao vivo</Button>
+          <Button icon={<LiveIcon name="radio" />} borderRadiusType="large">
+            Entrar ao vivo
+          </Button>
         </AvatarWrapper>
 
         <InfoWrapper>
