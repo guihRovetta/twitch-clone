@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+  Fade,
+  Placeholder,
+  PlaceholderLine,
+  PlaceholderMedia,
+} from 'rn-placeholder';
+import { PlaceholderLineProps } from 'rn-placeholder/lib/PlaceholderLine';
 import { useTheme } from 'styled-components';
 
 import Chip from '../Chip';
@@ -39,6 +46,14 @@ type StreamCardProps = {
   isLoading: boolean;
 };
 
+const PlaceholderStreamImage = () => (
+  <PlaceholderMedia style={{ width: 113, height: 63, marginRight: 16 }} />
+);
+
+const PlaceholderStreamText = ({ ...rest }: PlaceholderLineProps) => (
+  <PlaceholderLine height={16} noMargin style={{ marginBottom: 6 }} {...rest} />
+);
+
 const StreamCard = ({ stream, isLoading }: StreamCardProps) => {
   const theme = useTheme();
 
@@ -46,34 +61,53 @@ const StreamCard = ({ stream, isLoading }: StreamCardProps) => {
     stream || {};
 
   return (
-    <Container>
-      <StreamImageWrapper>
-        <StreamImage url={streamImageUrl} name={name} isLoading={isLoading} />
-        <Gradient colors={theme.gradients.transparentBlack}>
-          <LiveIndicator countValue={countValue} color="light" size="xxsmall" />
-        </Gradient>
-      </StreamImageWrapper>
+    <>
+      {!isLoading ? (
+        <Container>
+          <StreamImageWrapper>
+            <StreamImage
+              url={streamImageUrl}
+              name={name}
+              isLoading={isLoading}
+            />
+            <Gradient colors={theme.gradients.transparentBlack}>
+              <LiveIndicator
+                countValue={countValue}
+                color="light"
+                size="xxsmall"
+              />
+            </Gradient>
+          </StreamImageWrapper>
 
-      <InfoWrapper>
-        <StreamerWrapper>
-          <StreamerLogo source={{ uri: avatar }} resizeMode="cover" />
-          <StreamerName numberOfLines={1}>{name}</StreamerName>
-        </StreamerWrapper>
+          <InfoWrapper>
+            <StreamerWrapper>
+              <StreamerLogo source={{ uri: avatar }} resizeMode="cover" />
+              <StreamerName numberOfLines={1}>{name}</StreamerName>
+            </StreamerWrapper>
 
-        <Title numberOfLines={1}>{title}</Title>
-        <Category numberOfLines={1}>{category}</Category>
+            <Title numberOfLines={1}>{title}</Title>
+            <Category numberOfLines={1}>{category}</Category>
 
-        {chips?.length > 0 && (
-          <ChipContainer>
-            {chips?.map((chip) => (
-              <ChipWrapper key={chip?.key}>
-                <Chip label={chip?.label} />
-              </ChipWrapper>
-            ))}
-          </ChipContainer>
-        )}
-      </InfoWrapper>
-    </Container>
+            {chips?.length > 0 && (
+              <ChipContainer>
+                {chips?.map((chip) => (
+                  <ChipWrapper key={chip?.key}>
+                    <Chip label={chip?.label} />
+                  </ChipWrapper>
+                ))}
+              </ChipContainer>
+            )}
+          </InfoWrapper>
+        </Container>
+      ) : (
+        <Placeholder Left={PlaceholderStreamImage} Animation={Fade}>
+          <PlaceholderStreamText width={40} />
+          <PlaceholderStreamText />
+          <PlaceholderStreamText width={80} />
+          <PlaceholderStreamText width={50} />
+        </Placeholder>
+      )}
+    </>
   );
 };
 
