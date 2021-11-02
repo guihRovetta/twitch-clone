@@ -28,7 +28,7 @@ export const LabelWrapper = styled.View`
 
 export const Label = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.colors.text400};
+    color: ${theme.colors.text500};
     font-size: ${theme.fontSize.xregular}px;
     font-family: ${theme.fonts.semibold};
     margin-left: 16px;
