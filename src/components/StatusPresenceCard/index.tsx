@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { StatusType } from '../../hooks/auth/AuthContext';
 import { useAuth } from '../../hooks/auth/useAuth';
@@ -10,7 +10,10 @@ import { Container, Description } from './styles';
 const StatusPresenceCard = () => {
   const { user, changeUserStatus } = useAuth();
 
+  const [status, setStatus] = useState(user?.status);
+
   const handleChangeUserStatus = (newStatus: StatusType) => {
+    setStatus(newStatus);
     changeUserStatus(newStatus);
   };
 
@@ -20,7 +23,7 @@ const StatusPresenceCard = () => {
         {AVAILABLE_STATUS?.map((item, index) => (
           <StatusPresenceSelector
             key={item?.key}
-            selected={item?.key === user?.status}
+            selected={item?.key === status}
             isFirst={index === 0}
             onPress={() => handleChangeUserStatus(item?.key)}
           >
