@@ -66,7 +66,7 @@ O objetivo principal do projeto foi a utilização de alguns pacotes específico
   - [x] Top canais ao vivo
 - [ ] Descubra
 - [ ] Procurar
-- [-] Perfil
+- [ ] Perfil
   - [ ] Inscrições
   - [ ] Drops
   - [ ] Amigos
